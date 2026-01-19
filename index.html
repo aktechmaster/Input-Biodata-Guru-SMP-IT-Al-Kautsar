@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Data Guru SMP IT Al-Kautsar</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #e8f5e9; /* Hijau Muda Cerah */
+            margin: 0;
+            padding: 20px;
+            color: #2e7d32; /* Hijau Tua untuk Teks */
+        }
+
+        .container {
+            max-width: 700px;
+            background: white;
+            margin: 0 auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-top: 5px solid #66bb6a; /* Garis Hijau Aksen */
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header img {
+            width: 100px; /* Ukuran Logo */
+            margin-bottom: 10px;
+        }
+
+        .header h2 {
+            margin: 0;
+            color: #1b5e20;
+        }
+
+        .header p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #c8e6c9;
+            border-radius: 8px;
+            box-sizing: border-box; /* Agar padding tidak melebar */
+            font-family: 'Poppins', sans-serif;
+            transition: 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #ffab40; /* Fokus warna Orange */
+            box-shadow: 0 0 5px rgba(255, 171, 64, 0.5);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 15px;
+            background-color: #ff9800; /* Orange Muda */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        .btn-submit:hover {
+            background-color: #f57c00; /* Orange lebih gelap saat hover */
+        }
+
+        .wajib {
+            color: red;
+            font-size: 12px;
+        }
+
+        /* Loading Overlay */
+        #loading {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255,255,255,0.8);
+            text-align: center;
+            padding-top: 200px;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loading">
+        <h3 style="color: #ff9800;">Sedang Mengirim Data...</h3>
+        <p>Mohon tunggu sebentar</p>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <img src="logosmpit.png" alt="Logo SMP IT"> 
+            <h2>Biodata Guru & Karyawan</h2>
+            <p>SMP IT AL-KAUTSAR - DATABASE TERPADU</p>
+        </div>
+
+        <form id="formGuru">
+            
+            <div class="form-group">
+                <label>Nama Lengkap (Beserta Gelar) <span class="wajib">*</span></label>
+                <input type="text" name="nama" required placeholder="Contoh: Budi Santoso, S.Pd., Gr">
+            </div>
+
+            <div class="form-group">
+                <label>NIP / NIPY <span class="wajib">*</span></label>
+                <input type="text" name="nipy" required>
+            </div>
+
+            <div class="form-group">
+                <label>NUPTK (Isi '-' jika tidak ada) <span class="wajib">*</span></label>
+                <input type="text" name="nuptk" required>
+            </div>
+
+            <div class="form-group">
+                <label>NIK (KTP) <span class="wajib">*</span></label>
+                <input type="number" name="nik" required>
+            </div>
+
+            <div class="form-group">
+                <label>Jabatan Utama <span class="wajib">*</span></label>
+                <select name="jabatan" required>
+                    <option value="">-- Pilih --</option>
+                    <option value="Kepala Sekolah">Kepala Sekolah</option>
+                    <option value="Wakil Kepala Sekolah">Wakil Kepala Sekolah</option>
+                    <option value="Guru Mapel">Guru Mapel</option>
+                    <option value="Guru Kelas">Guru Kelas</option>
+                    <option value="Staff TU">Staff TU</option>
+                    <option value="Karyawan">Karyawan</option>
+                    <option value="Keamanan">Keamanan</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Tugas Tambahan</label>
+                <select name="tugas">
+                    <option value="-">-- Pilih --</option>
+                    <option value="Waka Kurikulum">Waka Kurikulum</option>
+                    <option value="Waka Kesiswaan">Waka Kesiswaan</option>
+                    <option value="Waka Sarpras">Waka Sarpras</option>
+                    <option value="Waka Humas">Waka Humas</option>
+                    <option value="Waka PMA">Waka PMA/option>
+                    <option value="Waka 'Ulumul Syar'i">Waka 'Ulumul Syar'i</option>
+                    <option value="Wali Kelas">Wali Kelas</option>
+                    <option value="Kepala Lab">Kepala Lab</option>
+                    <option value="Pembina OSIS">Pembina OSIS</option>
+                    <option value="Koordinator">Koordinator</option>
+                    <option value="Tidak Ada">Tidak Ada</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Status Kepegawaian <span class="wajib">*</span></label>
+                <select name="status" required>
+                    <option value="GTY">GTY (Tetap Yayasan)</option>
+                    <option value="GTTY">GTTY (Tidak Tetap)</option>
+                    <option value="Kontrak">Kontrak</option>
+                    <option value="Honorer">Honorer</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>TMT Sekolah (Mulai Bekerja) <span class="wajib">*</span></label>
+                <input type="date" name="tmt" required>
+            </div>
+
+            <div class="form-group">
+                <label>Status Sertifikasi <span class="wajib">*</span></label>
+                <select name="sertifikasi">
+                    <option value="Belum">Belum Sertifikasi</option>
+                    <option value="Sudah">Sudah Sertifikasi</option>
+                    <option value="Dalam Proses">Dalam Proses (PPG)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Tempat Lahir <span class="wajib">*</span></label>
+                <input type="text" name="tempat_lahir" required>
+            </div>
+
+            <div class="form-group">
+                <label>Tanggal Lahir <span class="wajib">*</span></label>
+                <input type="date" name="tgl_lahir" required>
+            </div>
+
+            <div class="form-group">
+                <label>Jenis Kelamin <span class="wajib">*</span></label>
+                <select name="gender" required>
+                    <option value="L">Laki-laki</option>
+                    <option value="P">Perempuan</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Alamat Domisili <span class="wajib">*</span></label>
+                <textarea name="alamat" rows="3" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>No. HP / WhatsApp <span class="wajib">*</span></label>
+                <input type="number" name="hp" required placeholder="08...">
+            </div>
+
+            <div class="form-group">
+                <label>Email <span class="wajib">*</span></label>
+                <input type="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label>Pendidikan Terakhir <span class="wajib">*</span></label>
+                <input type="text" name="pendidikan" required placeholder="Contoh: S1">
+            </div>
+
+            <div class="form-group">
+                <label>Jurusan <span class="wajib">*</span></label>
+                <input type="text" name="jurusan" required>
+            </div>
+
+            <div class="form-group">
+                <label>Kampus / Universitas <span class="wajib">*</span></label>
+                <input type="text" name="kampus" required>
+            </div>
+
+            <div class="form-group">
+                <label>Motto Hidup (Opsional)</label>
+                <textarea name="motto" rows="2" placeholder="Kata-kata penyemangat..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">KIRIM DATA</button>
+        </form>
+    </div>
+
+    <script>
+        // --- GANTI URL DI BAWAH INI DENGAN URL WEB APP ANDA ---
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyMzYcYD0iDf3NYwiO-4sUCAL15mdJC6jUqOx13-Z422ipc0KUS6PTw99DFS9DNHnW9/exec'; 
+
+        const form = document.getElementById('formGuru');
+        const loading = document.getElementById('loading');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            loading.style.display = 'block';
+
+            // Ambil data form
+            let formData = new FormData(form);
+            let dataObject = {};
+            formData.forEach((value, key) => dataObject[key] = value);
+
+            // Kirim ke Google Script
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: JSON.stringify(dataObject)
+            })
+            .then(response => {
+                loading.style.display = 'none';
+                alert('Data Berhasil Disimpan! Terima kasih Bapak/Ibu.');
+                form.reset(); // Kosongkan form setelah kirim
+            })
+            .catch(error => {
+                loading.style.display = 'none';
+                alert('Yah, Gagal kirim data. Coba cek internet atau hubungi Admin.');
+                console.error('Error!', error.message);
+            });
+        });
+    </script>
+
+</body>
+</html>
